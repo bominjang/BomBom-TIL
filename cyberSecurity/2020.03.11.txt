@@ -83,3 +83,44 @@ upload 하는 심각한 문제를 유발할 수도 있다.
 - 원데이 공격은 벤더가 취약점을 공개했을 때 공격자가 해당 취약점에 대해 연구해 공격하는 방식
 6-3) 0-Day 제로데이 
 - 해당 취약점에 대한 패치가 나오지 않은 시점에서 이루어지는 공격
+
+7) CWE-601: URL Redirection to Untrusted Site ('Open Redirect')
+7-1) Description
+- A web application accepts a user-controlled input that specifies a link to an external site, and uses that link in a Redirect. This simplifies phishing attacks.
+7-2)Extended Description
+- An http parameter may contain a URL value and could cause the web application to redirect the request to the specified URL.
+By modifying the URL value to a malicious site, and attacker may successfully launch a phishing scam and steal user credentials.
+Because the server name in the modified link is identical to the original site, phishing attempts have a more trustworthy appearance.
+
+8) Port forwarding
+8-1) 포트포워딩이란?
+- 포트포워딩 또는 포트 매핑은 컴퓨터 네트워크에서 패킷이 라우터나 방화벽과 같은 네트워크 게이트웨이를 가로지르는 동안 하나의 IP주소와 포트 번호 결합의 통신 요청을
+다른 곳으로 넘겨주는 네트워크 주소 변환(NAT- network address translation)의 응용이다.
+- 이 기법은 게이트웨이(외부망)의 반대쪽에 위치한 보호/내부망에 상주하는 호스트에 대한 서비스를 생성하기 위해 흔히 사용되며, 통신하는 목적지 IP주소와 포트 번호를 내부 호스트에
+다시 매핑함으로써 이루어진다.
+8-2) 목적
+- 포트 포워딩은 원격 컴퓨터(인터넷상의 컴퓨터)가 근거리 통신망(LAN) 내에 위치한 특정 컴퓨터나 서비스에 연결할 수 있게 함.
+- 일반적인 응용은 다음을 포함함.
+- 퍼블릭 HTTP 서버를 프라이빗 LAN 안에 실행 > 인터넷으로부터 프라이빗 LAN 상의 호스트에 대한 시큐어 셸 접근을 허가 > 인터넷으로부터 호스트에 대한 FTP 접근을 허가
+> 프라이빗 LAN에 위치한 공개 게임 서버를 실행
+
+9) Secure Shell, SSH
+9-1) SSH란?
+- 네트워크 상의 다른 컴퓨터에 로그인하거나 원격 시스템에서 명령을 실행하고 다른 시스템으로 파일을 복사할 수 있도록 해 주는 응용 프로그램 또는 그 프로토콜을 가리킴.
+- 기존의 RSH, Rlogin, Telnet 등을 대체하기 위해 설계되었으며, 강력한 인증 방법 및 안전하지 못한 네트워크에서 안전하게 통신을 할 수 있는 기능을 제공.
+- 기본적으로는 22번 포트를 사용함.
+- SSH는 암호화 기법을 사용하기 때문에 통신이 노출된다고 하더라도 이해할 수 없는 암호화된 문자로 보임.
+
+
+10) NAT 
+10-1) NAT란?
+- IP패킷의 TCP/UDP 포트 숫자와 소스 및 목적지의 IP 주소 등을 재기록하면서 라우터를 통해 네트워크 트래픽을 주고 받는 기술을 말함.
+- NAT를 사용하는 이유는 대개 사설 네트워크에 속한 여러 개의 호스트가 하나의 공인 IP 주소를 사용하여 인터넷에 접속하기 위함.
+
+11) 방화벽
+11-1) 방화벽이란
+- 미리 정의된 보안 규칙에 기반한, 들어오고 나가는 네트워크 트래픽을 모니터링하고 제어하는 네트워크 보안 시스템.
+- 방화벽은 일반적으로 신뢰할 수 있는 내부 네트워크, 신뢰할 수 없는 외부 네트워크(ex.. 인터넷)간의 장벽을 구성함. 
+- 서로 다른 네트워크를 지나는 데이터를 허용하거나 거부하거나 검열, 수정하는 하드웨어나 스프트웨어 장치임.
+
+ 
