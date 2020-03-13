@@ -1,0 +1,32 @@
+1)Frida
+- 모바일 환경 DBI(Dynamic Binary Instrumentation) Tool
+- pip install frida
+- pip install frida-tools
+
+- 이제는 프리다 서버를 다운받아줘야 함.
+- 근데 다운 전에 디바이스의 OS를 확인
+- Bit : adb shell getprop ro.product.cpu.abi
+- Type : adb shell getprop ro.product.cpu.abi2
+
+- server 다운 받고 그걸 에뮬레이터나 테스트폰의 /data/local/tmp에 넣어줌
+- 그러고 그 경로에 접근해서 ./frdia~로 실행시키면 서버 구동 됨.
+- 이전에 chmod 755 로 실행권한 추가 해줘야 함.
+
+- 글고 로컬에서 adb install 앱이름  해서 폰에 다운받아주고
+frida 후킹시작
+<윗부분 자세히 수정해야함>
+-----------------------------------------------------------------------------------------
+
+bundle 객체
+1) [Bundle]이란?
+- 최근 안드로이드 개발시 Activity 에서 Fragment를 많이 사용하는 추세로 넘어옴.
+- Fragment를 사용하다보면 Bundle을 통해서 데이터를 전달하는 방식을 사용.
+-> 이 Bundle을 활용하여 String, int 등 기본 Type을 보다 쉽게 전달 가능.
+즉, Bundle 클래스로 여러가지의 타입의 값을 저장하는 Map 클래스임.
+자바 내에서는 구조체가 없기에 클래스를 이용하므로, C언어에서의 구조체라고 생각하면 됨.
+
+[OWASP CrackME1]
+1) OnClick 핸들링을 통해서 버튼 클릭시 System.exit(0)함수가 호출되어 앱이 죽도록 코드가 작성되어 있음.
+그렇다면 해당 함수를 후킹하여 버튼을 클릭하여도 앱이 죽지 않도록!
+
+- Magisk Manager 쓰면 굳이 Server 안넣어도 됨.
