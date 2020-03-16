@@ -1,0 +1,76 @@
+[안드로이드]
+- 안드로이드 애플리케이션은 별도의 가상 인스턴스ㅔ서 실행되고, 각 애플리케이션에는 할당된 고유 사용자 ID가 부여됨.
+안드로이드에 설치된 모든 응용 프로그램은 일반 사용자 권한으로 실행. 응용 프로그램이 사용자의 데이터에 접근하면 모든 사항을 응용 프로그램의 사양에 명시함.
+데이터에 접근할 때는 사용자의 동의를 받아야 함. 이는 응용 프로그램 설치 시 동의 절차도 포함됨. 모든 응용 프로그램은 설치 시 자신의 고유한 사용자 ID를 할당 받아 동작함.
+
+1) ADB (Android Debug Bridge)
+- adb는 안드로이드 개발용으로 만들어진 디버그 테스팅 도구임.
+
+2-1) 로그캣을 이용한 로그 분석
+- 로그캣은 안드로이드 장치에서 발생하는 로그 메시지를 화면으로 출력하거나 파일 형태로 저장하는 기능을 제공.
+안드로이드 로깅 시스템은 시스ㅔㅁ 디버그 출력 정보를 확ㅇ니하거나 수집할 수 있는 메커니즘 제공.
+2-2) 로그캣 실행 방법.
+adb shell을 실행시킨 후, logcat 명령어를 통해 로그 메시지를 출력할 수 있다.
+2-3) 로그캣 태그
+태그란 시스템 구성 요소를 나타내는 짧은 문자열을 의미.
+ex) 로그 메시지 앞에 "D/dalvikvm"이라고 표시되어 있으면 "dalvikvm"이라는 요소에서 발생한 로그메시지임을 판단할 수 있음.
+- V : Verbose (가장 일반적인 수준)
+- D : Debug
+- I : Info
+- W : Warning
+- E : Error
+- F : Fatal
+- S : Silent (가장 높은 우선순위)
+2-4) 로그캣 옵션
+-b : 안드로이드 로그 시스템은 다양한 유형의 로그 버퍼를 갖고 있음. -b 옵션을 사용하여 출력되는 로그 내용을 선택적으로 확인할 수 있으며, 
+각 버퍼는 다음과 같은 내용을 포함함
+radio : radio/telephony 관련 메시지
+events : 이벤트와 관련된 메시지
+main : 메인 로그 버퍼(기본값)
+명령 수행 방법은 다음과 같다
+adb logcat -b <radio | events | main>
+
+-c : 기록된 로그 메시지를 삭제하고 종료
+-d : 로그 메시지를 화면에 덤프하고 종료
+-f : 로그 메시지를 지정한 파일 이름으로 저장.
+이 때 filename은 대상 장치의 "경로/파일명" 형태로 작성해야하며, -d 옵션을 함께 사용해야 함.
+0d 옵션을 추가하지 않으면 작업 중단 신호가 입력될 때까지 로그 메시지를 기록함.
+adb logcat -d -f /sdcard/output.txt -b radipo
+
+
+
+3) Frida
+python Hooking Script
+- Java.perform() : 인자에 함수를 정의해서 Java Method를 후킹할 수 있음.
+- Java.user()로 후킹할 Class 에 대한 객체를 받아올 수 있음.
+- implementation으로 원래 Method 동작 대신 원하는 동작을 정의할 수 있음.
+- console.log()로 python 콘솔창에 값을 출력할 수 있음.
+
+3-1) Frida 세팅
+- def on_message(message, data):
+    print("{}->{}".format(message, data))
+
+Package_name = "com.tigertext" #후킹할 패키지명
+device = frida.get_usb_device() #USB로 연결된 Device Attach
+pid = device.spawn([Package_name]) # App 실행 후, PID 저장
+process = device.attatch(pid) #App Attach
+device.resume(pid) # App 재실행
+
+script = process.create_script(hook_code) #JavaScript -> Hookingcode로 변환
+script.on('message',on_message) #Script 디버깅 함수 지정
+script.load() #Script load
+sys.stdin.read() #표준 입력 사용
+
+[리버싱]
+리버싱의 가장 기본 단계 https://bob3rdnewbie.tistory.com/184
+1. 패커/프로텍터/암호화 탐지 -> 탐지되면 우성 언팩/복호화 시도하고 imports 등을 복구
+2. 정적 분석 -> 실제 환경에서 실행하지 않고 어플리케이션의 알고리즘 로직 분석
+3. 동적 분석 -> 바이너리를 실행하여 행위 분석
+위 단계들은 리버싱의 ㄱㅏ장 기본적인 단계. 종합적인 프로세스는 리버서(리버싱을 수행하는 분석가
+)의 목표에 따라 달라짐.
+
+1)API(Application Programming Interface) 
+- 윈도우 환경에서는 코드를 공유하는 것은 커뮤니케이션과 신뢰 관계의 핵심임.
+사용자 어플리케이션은 직접적으로 하드웨어를 컨트롤 하거나 윈도우 커널과 직접적으로 통신할 수 없음.
+따라서 윈도우는 몇몇의 DLL(Dynamic Link Library)들을 제공하는데 이 DLL 들은 사용자 어플리케이션에게
+서비스를 제공하기 위해 몇몇의 함수를 export 함. 이 때 이런 함수를 API라고 부름. 따라서 API의 이해는 필수적임.
