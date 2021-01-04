@@ -1,6 +1,6 @@
 # 자율주행자동차
 
-1. BMW 자동차 코딩
+### 1. BMW 자동차 코딩
 - 차량 기능의 동작 여부 / 조건 변경
 - 차량 옵션을 추가/제거하는 VO(Vehicle Order)
    
@@ -9,7 +9,7 @@
 - 펌웨어 업데이트
 
 
-2. 차종별 코딩 프로그램과 케이블 비교
+### 2. 차종별 코딩 프로그램과 케이블 비교
 
 ![image](https://user-images.githubusercontent.com/44834680/103501102-919a5580-4e90-11eb-8303-0b158bfee57a.png)
 
@@ -17,10 +17,34 @@
 5시리즈는 G 시리즈에 해당
 [https://www.turnermotorsport.com/t-BMW-Chassis-Codes](https://www.turnermotorsport.com/t-BMW-Chassis-Codes) 여기서 조회 가능.
 
-3. 케이블, 프로그램
+### 3. 케이블, 프로그램
 
+
+### 3-1. ENET 케이블.
 ![image](https://user-images.githubusercontent.com/44834680/103501506-acb99500-4e91-11eb-832b-ff3dcec47c6a.png)
 
+위 케이블의 한 쪽은 OBD2(On-board diagnostics, 차량을 진단하고 리포팅하는 기능) 포트, 다른 한 쪽은 LAN포트에 끼울 수 있는 케이블. 
+
+구매는 [이런 데서](https://smartstore.naver.com/hunintl/products/347575893?NaPm=ct%3Dkji2ldio%7Cci%3D0zG0003IAJ9toQWegf3b%7Ctr%3Dpla%7Chk%3D74321162026d5565684f60d6a7154f57fc12a4b0)하면 될 듯.
+
+차량의 OBD2 포트는 운전석 하단에 있다고 함.
+![image](https://user-images.githubusercontent.com/44834680/103501644-2e112780-4e92-11eb-8f77-656e8cdc4903.png)
+
+### 3-2. 프로그램
+
+F, G 시리즈의 코딩 프로그램으로 가장 많이 사용되는 것은 E-SYS.
+
+E-SYS Launcher
+
+E-SYS를 사용하기 위해서는 토큰이라는 것이 필요.
+일반적으로 통용되는 시리얼이나 정품 인증, 제품키 정도로 이해하면 됨.
+따라서 일반 사용자가 E-SYS를 사용하기 위해서는 마치 토큰을 발급받은 것처럼 프로그램을 구동시켜주는 크랙 프로그램이 필요함.
+
+가장 널리 사용되는 프로그램이 TokenMaster가 만든 E-SYS Launcher.
+E-SYS Launcher 또한 무료와 유료 버전이 있는료는 Premium 버전이고, 유료는 Pro 버전입니다.
+
+무료는 유료에 비해 코딩 차종을 쉽게 바꿀 수 없다던지, 프로그램 실행시 일정 시간 기다려야된다던지 등의 기능상 제약이 존재.
+좀 더 적극적으로 여러 사용자를 대상으로 코딩을 하고 싶다면 TokenMaster에게 연락하여 유료를 구입할 수 있음. 보통 기부 단체에 기부하고 증명서를 제시하면 구입 가능하다고 
 
 #### References
 [https://bimmermac.com/1974](https://bimmermac.com/1974)
