@@ -1,4 +1,4 @@
-#### 프로그래머스 - 해시->전화번호 목록 문제 풀이 & 회고
+#### 프로그래머스 - [해시->전화번호 목록 문제](https://github.com/bominjang/Algorithm/blob/main/src/programmers/hash2.java) 풀이 & 회고
 
 ```
     import java.util.*;
