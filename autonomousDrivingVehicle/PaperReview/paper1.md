@@ -53,3 +53,15 @@ OBD-II를 통해 얻은 차량의 진단 정보는 자동차 수리점에서 사
 
 <img width="555" alt="image" src="https://user-images.githubusercontent.com/44834680/103730614-98f36780-5026-11eb-8170-8d7c7bb1b4d0.png">
 
+#### 2.4 ELM327
+ELM327은 차량 상태를 진단하는 데 사용되는 차량 수리용 microcontroller이다.
+블루투스 같은 무선 통신 모듈이 ELM327에 추가되면 운전자는 스마트폰을 ELM327에 연결하여 차량 상태를 실시간으로 확인할 수 있다. 스마트폰 및 ELM327을 사용하여 차량 상태를 확인하는 프로세스는 그림 3에 나와 있다.
+<img width="450" alt="image" src="https://user-images.githubusercontent.com/44834680/103731547-bc1f1680-5028-11eb-96b3-3c9e73ebf757.png">
+
+
+#### 2.5 Cyber Kill Chain
+Lockheed Martin은 일반적으로 모든 사이버 공격에 적용할 수 있는 사이버 공격 프로세스를 제안했다.
+그들은 사이버 공격 프로세스를 분석해 공격 단계별로 위협을 파악하고 공격 목적과 의도, 활동을 무력화해 조직의 복원력을 높이는 Cyber Kill Chain 방식도 제시했다. 사이버 킬 체인은 reconnaissance, weaponization, deliv- ery, exploitation, installation, command and control, and actions on objectives의 7단계로 구성된다. 각 단계의 특성은 표 2에 설명되어 있다.
+
+<img width="387" alt="image" src="https://user-images.githubusercontent.com/44834680/103731696-22a43480-5029-11eb-9e1c-37e42a8faed2.png">
+
