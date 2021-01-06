@@ -1,4 +1,4 @@
-# 논문 : Enhanced Android App-Repackaging Attack on In-Vehicle Network
+# Enhanced Android App-Repackaging Attack on In-Vehicle Network
 
 ## Abstract
 
@@ -106,4 +106,24 @@ target vehicle의 운전자(피해자)가 플레이스토어에서 스마트폰�
 
 공격 모델은 위에 설명된 총 9단계로 구성된다. 표 3은 사이버 킬 체인을 이용한 제안된 공격 모델의 분석을 보여준다.
 
+## 4. Attack Experiment
 
+이 장에서는 공격자가 재패키지한 앱을 사용하여 차량의 강제 제어 가능성을 입증한다. Attack Experiment는 준비 단계와 실제 공격 단계의 두 단계로 구성된다. 준비 단계와 실제 공격 단계는 각각 두 단계로 나뉜다.
+
+(1) Preparation 단계 1: CAN과 블루투스 모듈의 통신 프로토콜 분석(ELM327 모듈)
+(2) Preparation 단계 2 : 차량 적용 취약성 분석 및 악성 차량 적용의 생산
+(3) Actual attack 단계 1: LABCAR 기반 공격 실험.
+(4) Actual attack 단계 2: 실제 자동차 기반 공격 실험.
+
+마지막으로, 구글스토어에서 판매되는 ELM327과 관련된 모든 앱에 대해 위험 평가를 수행.
+리스크 평가를 위해 자동화된 분석 툴을 제작함.
+
+#### 4.1 Preparation Phse(Analysis)
+
+이 단계에서는 ELM327모듈과 차량 진단 앱의 취약점 분석. 안드로이드 앱 마켓에 있는 모든 앱들을 분석하였고, 리패키징 공격의 위험을 분석함.
+
+(A) Analysis of Communication Protocol between Vehicle Diagnosis App and ELM327
+ELM327 모듈은 차량의 OBD-2 포트에 장착되며 요청-응답 방법에 따라 차량 상태 정보를 차량 진단 앱으로 전달함.
+ELM327모듈은 일반적으로 요청 메시지를 보낼 때 고정된 CAN ID를 사용함. 단,특수한 경우에는 ELM Electronics에서 제공하는 AT 명령을 사용하여 요청 메시지의 CAN ID와 데이터를 변경할 수 있다. 차량을 제어하는 데 사용할 수 있는 AT 명령은 표 4에 나와 있음.
+단, CAN ID와 데이터가 변경되더라도 AT 명령과 ELM327의 통신 프로토콜을 따를 경우 차량은 모든 데이터를 정상 데이터로 인식함. 즉, 사용자가 원하는 CAN 데이터를 그림 4와 같이 ELM327로 전송하는 경우 차량에 동일한 정보가 수신됨.
+ELM327 기반의 모든 차량 진단 앱은 OBD PID를 사용하여 차량 상태 정보를 획득함. 따라서 OBD PID 코드는 차량 진단 앱을 분해 및 분석하여 쉽게 찾을 수 있다. 다음 섹션에서는 상용 진단 앱에서 AT 명령과 OBD PID 정보를 사용하여 취약점을 찾는 방법과 이를 악성 앱으로 리패키징하는 방법에 대해 논의한다.
