@@ -41,7 +41,7 @@ public class Main {
             l2=LPadList(l2,len1-len2);
         }
 
-        //길이를 맞춘 리스트 전
+        //길이를 맞춘 리스트 전달
         Storage storage = addLists(l1, l2);
         if(storage.carry == 0){
             return storage.result;
@@ -71,6 +71,7 @@ public class Main {
         }
         return total;
     }
+    //노드 이전에 노드 추가
     private static LinkedList.Node insertBefore(LinkedList.Node node, int data){
         LinkedList.Node before = new LinkedList.Node(data);
         if(node!=null){
@@ -88,22 +89,6 @@ public class Main {
         return head;
     }
 
-    private static LinkedList.Node KthToLast(LinkedList.Node first, int k){
-        LinkedList.Node p1 = first;
-        LinkedList.Node p2 = first;
-
-        for(int i=0;i<k;i++){
-            if(p1==null) return null;
-            p1 = p1.next;
-        }
-        while(p1!=null){ //마지막 노드까지!
-            p1=p1.next;
-            p2=p2.next;
-        }
-        return p2;
-
-    }
-
     static class LinkedList{
         Node header;
 
@@ -111,13 +96,15 @@ public class Main {
             int data;
             Node next=null;
 
+            public Node() {
+
+            }
+            
             public Node(int d){
                 this.data=d;
             }
 
-            public Node() {
-
-            }
+            
         }
 
         LinkedList(){
